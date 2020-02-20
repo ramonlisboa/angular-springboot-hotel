@@ -1,0 +1,43 @@
+
+<div class="card">
+<div class="card-header bg-primary text-white">Doing Check-in</div>
+<div [hidden]="submitted" class="card-body">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <div class="col-sm-6 float-left">
+                <label for="entryDate">Entry Date</label>
+                <input type="datetime-local" class="form-control" id="entryDate" required
+                    [(ngModel)]="hotelcheckin.entryDate" name="entryDate">
+            </div>
+            <div class="col-sm-6 float-left">
+                <label for="outDate">Exit Date</label>
+                <input type="datetime-local" class="form-control" id="outDate" required
+                    [(ngModel)]="hotelcheckin.outDate" name="outDate">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6 float-left">
+                <label for="hotelguestId" class=" float-left">Guest:</label>
+                <span style="margin-left: 10px" > <b> {{hotelguest.name}}  </b></span>
+                <input type="hidden" name="hotelguest" id="hotelguest" required [(ngModel)]="hotelcheckin.hotelguest">
+            </div>
+            <div class="col-sm-6 float-left">
+                <input type="checkbox" class="custom-control-input" id="ieVehicle" [(ngModel)]="hotelcheckin.ieVehicle" name="ieVehicle">
+                <label for="ieVehicle" class="custom-control-label" style="margin-left: 10px; margin-top: 20px;">Vehicle</label>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row col-sm-12 float-left">
+            <input type="hidden" id="ieStatus" [(ngModel)]="hotelcheckin.ieStatus" name="ieStatus" value="A">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" (click)="return()" class="btn btn-danger" style="margin-left: 10px">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<div [hidden]="selectGuest">
+    <app-list-guest (sendGuest)="reciverFeedback($event)"></app-list-guest>
+</div>
+</div>

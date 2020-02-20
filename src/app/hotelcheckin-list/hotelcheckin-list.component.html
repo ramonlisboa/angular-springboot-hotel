@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header bg-primary">
+    <h2 class="float-left text-white">Hotelcheckin List</h2>
+    <div class="float-right">
+      <a routerLink="/checkin/add" class="btn btn-success" routerLinkActive="active"><b>+</b> New Checkin</a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">Filter</div>
+      <div class="card-body">
+        <div class="">
+          <form  class="form-check">
+            <div class="float-left col-sm-6">
+              <input name="ieSituacao" type="radio" (click)="filterByStatus('A')" class="form-check-input" value="A" [checked]='true'>
+              <label for="ieSituacao"class="form-check-label" style="margin-left: 10px;;">Pessoas ainda presentes</label>
+            </div>
+            <div class="float-left col-sm-6">
+              <input name="ieSituacao" type="radio"  (click)="filterByStatus('E')"  class="form-check-input" value="E">
+              <label for="ieSituacao" class="form-check-label" style="margin-left: 10px;;">Pessoas que já saíram</label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <table [hidden]="hotelcheckins[0]" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Entry Date</th>
+          <th>Exit Date</th>
+          <th>Valor Gasto (R$)</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hotelcheckin of hotelcheckins | async">
+          <td>{{hotelcheckin.hotelguest.name}}</td>
+          <td>{{hotelcheckin.entryDate | date: 'd/MM/yyyy hh:mm'}}</td>
+          <td>{{hotelcheckin.outDate | date: 'd/MM/yyyy hh:mm'}}</td>
+          <td>{{hotelcheckin.vlTotal | currency: 'BRL'}}</td>
+          <td>
+            <button (click)="hotelcheckinDetails(hotelcheckin.id)" class="btn btn-info">Details</button>
+            <button (click)="hotelcheckinClose(hotelcheckin.id)" class="btn btn-warning"
+              style="margin-left: 10px">Close</button>
+            <button (click)="deleteHotelcheckin(hotelcheckin.id)" class="btn btn-danger"
+              style="margin-left: 10px">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

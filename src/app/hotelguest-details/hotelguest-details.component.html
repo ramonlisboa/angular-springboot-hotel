@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">Hotelguest Details</div>
+
+  <div *ngIf="hotelguest" class="card-body">
+    <div>
+      <label><b>Name: </b></label> {{hotelguest.name}}
+    </div>
+    <div>
+      <label><b>Document: </b></label> {{hotelguest.document}}
+    </div>
+    <div>
+      <label><b>Phone: </b></label> {{hotelguest.phone}}
+    </div>
+  </div>
+</div>
+
+  <br>
+  <br>
+<button (click)="list()" class="btn btn-primary">Back to Hotelguest List</button><br>

@@ -1,0 +1,22 @@
+<div class="card col-md-6" [hidden]="submitted" style="margin: 0 auto;">
+  <div class="card-header">Looking for Guest's Name</div>
+  <div class="card-body" style="margin: 0 auto;">
+      <form>
+        <div class="form-group">
+          <input (keypress)="keyPress($event)" type="text" class="form-control" id="name" placeholder="Enter a name"
+            inputmode="text">
+        </div>
+      </form>
+      <div class="">
+        <table class="table table-striped">
+          <tbody>
+            <tr (click)="onSelect(hotelguest.id)" *ngFor="let hotelguest of hotelguests | async" style="cursor: pointer;">
+              <td> {{hotelguest.id}} </td>
+              <td> {{hotelguest.name}} </td>
+              <td> {{hotelguest.document}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

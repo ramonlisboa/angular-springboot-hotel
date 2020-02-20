@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    Hotelguest List
+      <div class="float-right">
+        <a routerLink="/guests/add" class="btn btn-success" routerLinkActive="active">Add Hotelguest</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Document</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hotelguest of hotelguests | async">
+            <td>{{hotelguest.name}}</td>
+            <td>{{hotelguest.document}}</td>
+            <td>{{hotelguest.phone}}</td>
+            <td><button (click)="deleteHotelguest(hotelguest.id)" class="btn btn-danger">Delete</button>
+                <button (click)="hotelguestDetails(hotelguest.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
